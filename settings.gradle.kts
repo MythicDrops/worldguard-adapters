@@ -1,15 +1,14 @@
-import de.fayard.refreshVersions.bootstrapRefreshVersions
-import de.fayard.refreshVersions.migrateRefreshVersionsIfNeeded
-
-buildscript {
-    repositories { gradlePluginPortal() }
-    dependencies.classpath("de.fayard.refreshVersions:refreshVersions:0.9.7")
-////                                                      # available:0.10.0")
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
 }
 
-migrateRefreshVersionsIfNeeded("0.9.7") // Will be automatically removed by refreshVersions when upgraded to the latest version.
+plugins {
+    // See https://jmfayard.github.io/refreshVersions
+    id("de.fayard.refreshVersions") version "0.11.0"
 
-bootstrapRefreshVersions()
+}
 
 gradle.allprojects {
     group = "io.pixeloutlaw.worldguard"
