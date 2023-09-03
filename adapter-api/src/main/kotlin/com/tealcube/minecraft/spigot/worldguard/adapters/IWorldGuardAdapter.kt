@@ -26,7 +26,7 @@ import org.bukkit.Location
 /**
  * An adapter for checking flag statuses at a location.
  */
-interface IWorldGuardAdapter {
+public interface IWorldGuardAdapter {
     /**
      * Returns true if flag is allow at location.
      *
@@ -35,7 +35,7 @@ interface IWorldGuardAdapter {
      *
      * @return if flag is allow at location
      */
-    fun isFlagAllowAtLocation(location: Location, flagName: String): Boolean
+    public fun isFlagAllowAtLocation(location: Location, flagName: String): Boolean
 
     /**
      * Returns true if flag is deny at location.
@@ -45,12 +45,12 @@ interface IWorldGuardAdapter {
      *
      * @return if flag is deny at location
      */
-    fun isFlagDenyAtLocation(location: Location, flagName: String): Boolean
+    public fun isFlagDenyAtLocation(location: Location, flagName: String): Boolean
 
     /**
      * Registers a flag with WorldGuard.
      *
      * @param flagName Name of the flag
      */
-    fun registerFlag(flagName: String)
+    public fun registerFlag(flagName: String)
 }

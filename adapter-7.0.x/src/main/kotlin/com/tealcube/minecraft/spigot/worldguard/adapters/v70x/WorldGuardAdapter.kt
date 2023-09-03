@@ -30,7 +30,7 @@ import com.sk89q.worldguard.protection.regions.RegionContainer
 import com.tealcube.minecraft.spigot.worldguard.adapters.IWorldGuardAdapter
 import org.bukkit.Location
 
-object WorldGuardAdapter : IWorldGuardAdapter {
+public object WorldGuardAdapter : IWorldGuardAdapter {
     // we had to change this due to WG 7.0.4 not always having a platform for some reason
     @Suppress("detekt.TooGenericExceptionCaught")
     private val worldGuardPlatform: WorldGuardPlatform?
