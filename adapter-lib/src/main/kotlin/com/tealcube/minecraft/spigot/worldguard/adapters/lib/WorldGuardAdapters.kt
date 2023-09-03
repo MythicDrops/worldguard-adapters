@@ -26,7 +26,7 @@ import io.pixeloutlaw.kindling.Log
 import org.bukkit.Bukkit
 import org.bukkit.Location
 
-object WorldGuardAdapters : IWorldGuardAdapter {
+public object WorldGuardAdapters : IWorldGuardAdapter {
     private val internalAdapter: IWorldGuardAdapter by lazy {
         val worldGuardPlugin = Bukkit.getPluginManager().getPlugin("WorldGuard") ?: return@lazy NoOpWorldGuardAdapter
         try {
@@ -53,5 +53,5 @@ object WorldGuardAdapters : IWorldGuardAdapter {
     override fun isFlagDenyAtLocation(location: Location, flagName: String): Boolean =
         internalAdapter.isFlagDenyAtLocation(location, flagName)
 
-    override fun registerFlag(flagName: String) = internalAdapter.registerFlag(flagName)
+    override fun registerFlag(flagName: String): Unit = internalAdapter.registerFlag(flagName)
 }

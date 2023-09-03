@@ -29,7 +29,7 @@ import com.tealcube.minecraft.spigot.worldguard.adapters.IWorldGuardAdapter
 import org.bukkit.Location
 import org.bukkit.entity.Player
 
-object WorldGuardAdapter : IWorldGuardAdapter {
+public object WorldGuardAdapter : IWorldGuardAdapter {
     private val nullPlayer: Player? = null
     private val regionContainer: RegionContainer by lazy {
         WGBukkit.getPlugin().regionContainer

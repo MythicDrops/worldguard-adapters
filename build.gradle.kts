@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.5.21" apply false
+    kotlin("jvm") version "1.9.10" apply false
     id("dev.mythicdrops.gradle.project")
 }
 
@@ -13,5 +13,5 @@ contacts {
 }
 
 mythicDropsRelease {
-    repository = "MythicDrops/worldguard-adapters"
+    repository.set("MythicDrops/worldguard-adapters")
 }

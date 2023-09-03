@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm")
     id("org.jetbrains.kotlinx.binary-compatibility-validator")
+    `jvm-test-suite`
 }
 
 description = "WorldGuard Adapters Lib for MythicDrops"
@@ -13,4 +14,8 @@ dependencies {
 
     implementation(kotlin("stdlib-jdk8"))
     implementation("io.pixeloutlaw:kindling:_")
+}
+
+kotlin {
+    explicitApi()
 }
