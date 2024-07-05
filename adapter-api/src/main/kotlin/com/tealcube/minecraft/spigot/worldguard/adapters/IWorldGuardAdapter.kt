@@ -35,7 +35,10 @@ public interface IWorldGuardAdapter {
      *
      * @return if flag is allow at location
      */
-    public fun isFlagAllowAtLocation(location: Location, flagName: String): Boolean
+    public fun isFlagAllowAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean
 
     /**
      * Returns true if flag is deny at location.
@@ -45,7 +48,10 @@ public interface IWorldGuardAdapter {
      *
      * @return if flag is deny at location
      */
-    public fun isFlagDenyAtLocation(location: Location, flagName: String): Boolean
+    public fun isFlagDenyAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean
 
     /**
      * Registers a flag with WorldGuard.

@@ -47,11 +47,15 @@ public object WorldGuardAdapters : IWorldGuardAdapter {
         }
     }
 
-    override fun isFlagAllowAtLocation(location: Location, flagName: String): Boolean =
-        internalAdapter.isFlagAllowAtLocation(location, flagName)
+    override fun isFlagAllowAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean = internalAdapter.isFlagAllowAtLocation(location, flagName)
 
-    override fun isFlagDenyAtLocation(location: Location, flagName: String): Boolean =
-        internalAdapter.isFlagDenyAtLocation(location, flagName)
+    override fun isFlagDenyAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean = internalAdapter.isFlagDenyAtLocation(location, flagName)
 
     override fun registerFlag(flagName: String): Unit = internalAdapter.registerFlag(flagName)
 }
