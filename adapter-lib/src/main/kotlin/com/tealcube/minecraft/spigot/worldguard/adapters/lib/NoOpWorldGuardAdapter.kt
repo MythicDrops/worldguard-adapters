@@ -29,10 +29,16 @@ import org.bukkit.Location
  */
 internal object NoOpWorldGuardAdapter : IWorldGuardAdapter {
     // do nothing, return true if no WorldGuard
-    override fun isFlagAllowAtLocation(location: Location, flagName: String): Boolean = true
+    override fun isFlagAllowAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean = true
 
     // do nothing, return false if no WorldGuard
-    override fun isFlagDenyAtLocation(location: Location, flagName: String): Boolean = false
+    override fun isFlagDenyAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean = false
 
     override fun registerFlag(flagName: String) {
         // do nothing, no op

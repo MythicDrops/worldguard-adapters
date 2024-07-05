@@ -34,22 +34,27 @@ public object WorldGuardAdapter : IWorldGuardAdapter {
     // we had to change this due to WG 7.0.4 not always having a platform for some reason
     @Suppress("detekt.TooGenericExceptionCaught")
     private val worldGuardPlatform: WorldGuardPlatform?
-        get() = try {
-            WorldGuard.getInstance().platform
-        } catch (npe: NullPointerException) {
-            null
-        }
+        get() =
+            try {
+                WorldGuard.getInstance().platform
+            } catch (npe: NullPointerException) {
+                null
+            }
     private val regionContainer: RegionContainer?
         get() = worldGuardPlatform?.regionContainer
     private val flagRegistry: FlagRegistry by lazy {
         WorldGuard.getInstance().flagRegistry
     }
 
-    override fun isFlagAllowAtLocation(location: Location, flagName: String): Boolean =
-        getFlagFromRegistry(flagName)?.let { isFlagAllowAtLocation(location, it) } ?: true
+    override fun isFlagAllowAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean = getFlagFromRegistry(flagName)?.let { isFlagAllowAtLocation(location, it) } ?: true
 
-    override fun isFlagDenyAtLocation(location: Location, flagName: String): Boolean =
-        getFlagFromRegistry(flagName)?.let { isFlagDenyAtLocation(location, it) } ?: false
+    override fun isFlagDenyAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean = getFlagFromRegistry(flagName)?.let { isFlagDenyAtLocation(location, it) } ?: false
 
     override fun registerFlag(flagName: String) {
         flagRegistry.register(StateFlag(flagName, true))
@@ -57,11 +62,15 @@ public object WorldGuardAdapter : IWorldGuardAdapter {
 
     private fun getRegionQuery() = regionContainer?.createQuery()
 
-    private fun isFlagAllowAtLocation(location: Location, flag: StateFlag) =
-        getRegionQuery()?.testState(BukkitAdapter.adapt(location), null, flag)
+    private fun isFlagAllowAtLocation(
+        location: Location,
+        flag: StateFlag,
+    ) = getRegionQuery()?.testState(BukkitAdapter.adapt(location), null, flag)
 
-    private fun isFlagDenyAtLocation(location: Location, flag: StateFlag) =
-        getRegionQuery()?.let { !it.testState(BukkitAdapter.adapt(location), null, flag) }
+    private fun isFlagDenyAtLocation(
+        location: Location,
+        flag: StateFlag,
+    ) = getRegionQuery()?.let { !it.testState(BukkitAdapter.adapt(location), null, flag) }
 
     private fun getFlagFromRegistry(flagName: String): StateFlag? = flagRegistry.get(flagName) as? StateFlag
 }

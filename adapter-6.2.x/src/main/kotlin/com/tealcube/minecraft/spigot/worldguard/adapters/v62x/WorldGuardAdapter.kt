@@ -38,11 +38,15 @@ public object WorldGuardAdapter : IWorldGuardAdapter {
         WGBukkit.getPlugin().flagRegistry
     }
 
-    override fun isFlagAllowAtLocation(location: Location, flagName: String): Boolean =
-        getFlagFromRegistry(flagName)?.let { isFlagAllowAtLocation(location, it) } ?: true
+    override fun isFlagAllowAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean = getFlagFromRegistry(flagName)?.let { isFlagAllowAtLocation(location, it) } ?: true
 
-    override fun isFlagDenyAtLocation(location: Location, flagName: String): Boolean =
-        getFlagFromRegistry(flagName)?.let { isFlagDenyAtLocation(location, it) } ?: false
+    override fun isFlagDenyAtLocation(
+        location: Location,
+        flagName: String,
+    ): Boolean = getFlagFromRegistry(flagName)?.let { isFlagDenyAtLocation(location, it) } ?: false
 
     override fun registerFlag(flagName: String) {
         flagRegistry.register(StateFlag(flagName, true))
@@ -50,11 +54,15 @@ public object WorldGuardAdapter : IWorldGuardAdapter {
 
     private fun getRegionQuery() = regionContainer.createQuery()
 
-    private fun isFlagAllowAtLocation(location: Location, flag: StateFlag) =
-        getRegionQuery().testState(location, nullPlayer, flag)
+    private fun isFlagAllowAtLocation(
+        location: Location,
+        flag: StateFlag,
+    ) = getRegionQuery().testState(location, nullPlayer, flag)
 
-    private fun isFlagDenyAtLocation(location: Location, flag: StateFlag) =
-        !getRegionQuery().testState(location, nullPlayer, flag)
+    private fun isFlagDenyAtLocation(
+        location: Location,
+        flag: StateFlag,
+    ) = !getRegionQuery().testState(location, nullPlayer, flag)
 
     private fun getFlagFromRegistry(flagName: String): StateFlag? = flagRegistry.get(flagName) as? StateFlag
 }
